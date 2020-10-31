@@ -179,6 +179,8 @@ object frmMain: TfrmMain
     Color = clInfoText
     ParentColor = False
     TabOrder = 2
+    OnMouseEnter = memMainMouseEnter
+    OnMouseLeave = memMainMouseLeave
     object memMain: TMemo
       Left = 8
       Height = 332
