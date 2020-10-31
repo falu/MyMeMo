@@ -1,0 +1,312 @@
+object frmMain: TfrmMain
+  Left = 1043
+  Height = 403
+  Top = 233
+  Width = 271
+  AlphaBlend = True
+  AlphaBlendValue = 128
+  BorderStyle = bsNone
+  Caption = 'MyTodo'
+  ClientHeight = 403
+  ClientWidth = 271
+  OnCreate = FormCreate
+  OnShow = FormShow
+  SessionProperties = 'Height;Left;memMain.Lines;Top;Width;clrMemo.Color;clrMemo.Font;clrTitle.Color;clrTitle.Font'
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object pnlTop: TPanel
+    Cursor = crSizeAll
+    Left = 0
+    Height = 32
+    Top = 0
+    Width = 271
+    Align = alTop
+    BevelOuter = bvNone
+    Caption = 'MyMeMo'
+    ClientHeight = 32
+    ClientWidth = 271
+    Color = cl3DDkShadow
+    Font.Color = clInfoBk
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    PopupMenu = popMain
+    TabOrder = 0
+    OnMouseDown = pnlTopMouseDown
+    OnMouseEnter = memMainMouseEnter
+    OnMouseLeave = memMainMouseLeave
+    OnMouseUp = pnlTopMouseUp
+    object imgClose: TImage
+      Left = 239
+      Height = 32
+      Top = 0
+      Width = 32
+      Align = alRight
+      OnClick = imgCloseClick
+      OnMouseEnter = memMainMouseEnter
+      OnMouseLeave = memMainMouseLeave
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869631103000089504E47
+        0D0A1A0A0000000D49484452000000300000003008060000005702F987000000
+        06624B474400FF00FF00FFA0BDA793000002C6494441546881ED99416B134118
+        86DFC94E4C4A5A108F228247A1274DD34688852607036A7F8207F550A88656A9
+        5551A894A2D2E6A010054F9E443C2844C18309888298E89F90D0A3B69240D624
+        FB79B044D76476B3B3330DCA3EC7FD7692F7612633DF6E808080808061C2DC6E
+        68642667C9A20530C401C4762113003400AA32423E56AE169D6E7414A86712B7
+        41B8A2369B3708581B2B55AE8BEA428146667296885EE889E50D069C8A952A2F
+        FBD542A24164D182BE48DE20605154130A3086A37AE248111715C433008CEAC9
+        22C598A82014F857F02FC039C05C77636DF813E0614473D710397FD1B3044F4E
+        8327A77D7D3D0070F99161447357614C1CEB5E321FDD0388DC874EA510995FFA
+        25CD39DAEF4AD231A467207276DE169ECF64B1E7CC9CEB4CF0A91422179601C3
+        00422144E62E81A7D2B231E4055AC567A0ADAFB66BE113A71D97932DFC9F0C30
+        6B22A405ACCD1A9AB7967A24F84CB6AF44DFF09605B3B08EF6FBB26C0C7F3FE2
+        4125748507146CA36E123C795C5B78C0A199ABA7139E166668FF01446FDE05DB
+        BBCF5E20B22F27C9F0A3A54ADFACCA4E62D14CA808EF84D256A22BD1A8F71689
+        60163694860734F442A18387C046467A0B8CC1383CAEBCED502AD0DD6D4246FF
+        7A3A8BC839EF6D8713CA04445B25351AF6FB144B281170DAE79B3772BD5BAC42
+        09DF026E8794F09C5024E14B60D01356A784B480D7F6C0DAACA1B9BA0CDADEB2
+        7F4E7AA78B95445AC08827EDE13B1D98F7EF38EEF356ED0B9A2B977B6682B6BF
+        C9C69017300BEBBF1F442C0BE6830DB43FBC751DF7F772FAF1F4315ACF9FC8C6
+        F0F1446659301FE601C6D0F9FC71A0F0DDA13BCBC9183F82D66B7FEFCE943573
+        BAD1DECC0D8BFF5780017D5ACAA1F15D547078B5489FF464914298453C0384BC
+        9E2CDE614C9C4528102B578B04ACE9893438446C35F6A6F24A5477FF8B299D38
+        49C022032676EB8D3503EA04541843DE297C404040C0F0F909808F3C9536F3BA
+        D90000000049454E44AE426082
+      }
+      Proportional = True
+      Stretch = True
+    end
+    object Image1: TImage
+      Left = 0
+      Height = 32
+      Top = 0
+      Width = 32
+      Align = alLeft
+      OnClick = Image1Click
+      OnMouseEnter = memMainMouseEnter
+      OnMouseLeave = memMainMouseLeave
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869636002000089504E47
+        0D0A1A0A0000000D49484452000000300000003008060000005702F987000000
+        06624B474400FF00FF00FFA0BDA79300000215494441546881ED983F68136118
+        879FF7D23FB44DAB22B5430B6D0427271171932E8E0E0E3A159CF3C780935207
+        1504C142DA6ADB543A5570151427277112049D3A194C063B06699A5834CDBD2E
+        DDEC97DE5DEEF8287ECF78EFF77EEFEFB983EFB80387C3E1B08924B5F154F9D7
+        64BF7616418654DAB76BD953B524E6C42E70F185F6D7F75B39117D0CA40F2EEF
+        89F2D4EBA49F548AF23BCE79B10A645676AFA8C79AC079C3926FA814AAF9F4FB
+        B866C62290D9684ED0F61740E682ED29EF52FB5EB6521CFED1EBECDE041EAA97
+        196FCD215A024E87ECDE519507B5F191156E4A276A84C802D3E5D6054FB50C7A
+        39EA1E077C55FC5C2D77E25394E6D002338B3F4FCA40DF23843C908A32F4107C
+        D0577F7CEE6C17C6EA611A430964D6766FA03C479808972F307560BE9A4D6F20
+        A2411A02099C5DDF39A71D6F15E16A4FF182227C4C75C8550AA35B472FEDC254
+        498706069B7755B8070CC61630186D94F2307BF7B7F2679AA6454681CC6AE31A
+        E23D039D49265F3004B65565BE9A4FBF3CACEE993BE5ADEDF0000A93886E9AEA
+        6681638213B04D5F94A60FB746E2CE01C0EC662B74CFFFF904A2DCA9A438F64F
+        C009D8C69D42B671A7906D9C806DDC29641B770AD9A69B80F14F80051AA64297
+        8F7ABE2412251AC62C4601F1594E264B78D4D72553CD28F03D3FFA1AB4944CA4
+        30C842AD30F6C6583DAA7DBADCB8EEA914412E8126F302F80769817E565F97BA
+        8577381C0EFBFC0546599B20849615890000000049454E44AE426082
+      }
+      PopupMenu = popMain
+      Proportional = True
+      Stretch = True
+    end
+  end
+  object pnlBottom: TPanel
+    Left = 0
+    Height = 23
+    Top = 380
+    Width = 271
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 23
+    ClientWidth = 271
+    Color = clInfoText
+    ParentColor = False
+    TabOrder = 1
+    OnMouseEnter = memMainMouseEnter
+    OnMouseLeave = memMainMouseLeave
+    object imgResize: TImage
+      Cursor = crSizeNWSE
+      Left = 248
+      Height = 23
+      Hint = 'Átméretezés'
+      Top = 0
+      Width = 23
+      AntialiasingMode = amOn
+      Align = alRight
+      OnMouseDown = imgResizeMouseDown
+      OnMouseEnter = memMainMouseEnter
+      OnMouseLeave = memMainMouseLeave
+      OnMouseUp = imgResizeMouseUp
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869639301000089504E47
+        0D0A1A0A0000000D49484452000000300000003008060000005702F987000000
+        06624B474400FF00FF00FFA0BDA79300000148494441546881ED99BF4E024110
+        C6BF4513ABA3B33FEE356C08B5050D315292D81CF65052C203B014BC02419FC0
+        D8F8023E00D0D3DD59A2636582F1365970FFDC24F32B67F736FBDDCC7CBB9703
+        04411062A24C03CF2F6F5415EF766E541DE6FDD0A80A7282BD00AB1232A5CF37
+        367B609F01F602D8E3BDB6535D8C14D4D466EE364F4EDE8FF712DAE5CD1981C6
+        BED60FD2033E455C9A065CDBE82E6FCE525DC0B69C6CF710D4850817EF201C5C
+        AE194C40B6286E1BF87A823267FD1C820868E9B247A4D600AE8EC29597B65309
+        930102E1B76593223CBA68EC2002B6C36405C23D8003804F221A6C8689F66DB1
+        CE49E7E55DA63FFA7FE2BA18B574E9A4A4A291CDCBC939CF19FDFDFAE1D5C91B
+        D92FDB5EAF2BEC6FA34E3DD935B53B897D200262230262536B17B2F90E619F01
+        11109B5AF7809CC41C085642FFFDC161827D06D80B10044188CB3772687303FD
+        358D5B0000000049454E44AE426082
+      }
+      Proportional = True
+      Stretch = True
+    end
+    object stFocusCatcher: TStaticText
+      Left = 91
+      Height = 17
+      Top = 15
+      Width = 65
+      TabOrder = 0
+    end
+  end
+  object pnlMain: TPanel
+    Left = 0
+    Height = 348
+    Top = 32
+    Width = 271
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 8
+    ClientHeight = 348
+    ClientWidth = 271
+    Color = clInfoText
+    ParentColor = False
+    TabOrder = 2
+    object memMain: TMemo
+      Left = 8
+      Height = 332
+      Top = 8
+      Width = 255
+      Align = alClient
+      BorderStyle = bsNone
+      Font.Color = clInfoBk
+      Font.Height = -13
+      Font.Style = [fsBold]
+      Lines.Strings = (
+        'Memo1'
+      )
+      OnMouseEnter = memMainMouseEnter
+      OnMouseLeave = memMainMouseLeave
+      ParentColor = True
+      ParentFont = False
+      TabOrder = 0
+      WordWrap = False
+    end
+    object pnlTheme: TPanel
+      Left = 16
+      Height = 72
+      Top = 200
+      Width = 234
+      Caption = 'pnlTheme'
+      ClientHeight = 72
+      ClientWidth = 234
+      ParentColor = False
+      TabOrder = 1
+      Visible = False
+      object clrTitle: TPanel
+        Left = 8
+        Height = 42
+        Top = 8
+        Width = 90
+        Caption = 'clrTitle'
+        TabOrder = 0
+      end
+      object clrMemo: TPanel
+        Left = 104
+        Height = 42
+        Top = 8
+        Width = 122
+        Caption = 'clrMemo'
+        TabOrder = 1
+      end
+    end
+  end
+  object xpsData: TXMLPropStorage
+    StoredValues = <>
+    FileName = 'data.xml'
+    RootNodePath = 'qwert'
+    Left = 176
+    Top = 80
+  end
+  object alMain: TActionList
+    Left = 48
+    Top = 80
+    object actTitleBack: TAction
+      Caption = 'Title Background'
+      OnExecute = actTitleBackExecute
+    end
+    object actTitleFont: TAction
+      Caption = 'Title Font'
+      OnExecute = actTitleFontExecute
+    end
+    object actMemoBack: TAction
+      Caption = 'Memo Background'
+      OnExecute = actMemoBackExecute
+    end
+    object actMemoFont: TAction
+      Caption = 'Memo Font'
+      OnExecute = actMemoFontExecute
+    end
+    object actSetTheme: TAction
+      Caption = 'Set Theme'
+      OnExecute = actSetThemeExecute
+    end
+  end
+  object dlgColor: TColorDialog
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    Left = 48
+    Top = 144
+  end
+  object dlgFont: TFontDialog
+    MinFontSize = 0
+    MaxFontSize = 0
+    Options = [fdEffects, fdWysiwyg]
+    Left = 176
+    Top = 152
+  end
+  object popMain: TPopupMenu
+    Left = 106
+    Top = 80
+    object MenuItem1: TMenuItem
+      Action = actTitleBack
+    end
+    object MenuItem2: TMenuItem
+      Action = actTitleFont
+    end
+    object MenuItem3: TMenuItem
+      Action = actMemoBack
+    end
+    object MenuItem4: TMenuItem
+      Action = actMemoFont
+    end
+  end
+end
