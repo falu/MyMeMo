@@ -188,16 +188,12 @@ object frmMain: TfrmMain
       Width = 255
       Align = alClient
       BorderStyle = bsNone
-      Font.Color = clInfoBk
-      Font.Height = -13
-      Font.Style = [fsBold]
       Lines.Strings = (
         'Memo1'
       )
       OnMouseEnter = memMainMouseEnter
       OnMouseLeave = memMainMouseLeave
       ParentColor = True
-      ParentFont = False
       TabOrder = 0
       WordWrap = False
     end
