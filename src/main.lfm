@@ -1,19 +1,31 @@
 object frmMain: TfrmMain
-  Left = 1043
+  Left = 1220
   Height = 403
-  Top = 233
+  Top = 259
   Width = 271
   AlphaBlend = True
   AlphaBlendValue = 128
   BorderStyle = bsNone
-  Caption = 'MyTodo'
+  Caption = 'MyMeMo'
   ClientHeight = 403
   ClientWidth = 271
+  DefaultMonitor = dmPrimary
   OnCreate = FormCreate
   OnShow = FormShow
   SessionProperties = 'Height;Left;memMain.Lines;Top;Width;clrMemo.Color;clrMemo.Font;clrTitle.Color;clrTitle.Font'
   ShowHint = True
+  ShowInTaskBar = stAlways
   LCLVersion = '2.0.10.0'
+  object stFocusCatcher: TEdit
+    Left = 32
+    Height = 17
+    Top = 8
+    Width = 16
+    AutoSize = False
+    ParentColor = True
+    ReadOnly = True
+    TabOrder = 3
+  end
   object pnlTop: TPanel
     Cursor = crSizeAll
     Left = 0
@@ -33,8 +45,6 @@ object frmMain: TfrmMain
     PopupMenu = popMain
     TabOrder = 0
     OnMouseDown = pnlTopMouseDown
-    OnMouseEnter = memMainMouseEnter
-    OnMouseLeave = memMainMouseLeave
     OnMouseUp = pnlTopMouseUp
     object imgClose: TImage
       Left = 239
@@ -43,8 +53,6 @@ object frmMain: TfrmMain
       Width = 32
       Align = alRight
       OnClick = imgCloseClick
-      OnMouseEnter = memMainMouseEnter
-      OnMouseLeave = memMainMouseLeave
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869631103000089504E47
         0D0A1A0A0000000D49484452000000300000003008060000005702F987000000
@@ -83,8 +91,6 @@ object frmMain: TfrmMain
       Width = 32
       Align = alLeft
       OnClick = Image1Click
-      OnMouseEnter = memMainMouseEnter
-      OnMouseLeave = memMainMouseLeave
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869636002000089504E47
         0D0A1A0A0000000D49484452000000300000003008060000005702F987000000
@@ -124,8 +130,6 @@ object frmMain: TfrmMain
     Color = clInfoText
     ParentColor = False
     TabOrder = 1
-    OnMouseEnter = memMainMouseEnter
-    OnMouseLeave = memMainMouseLeave
     object imgResize: TImage
       Cursor = crSizeNWSE
       Left = 248
@@ -136,8 +140,6 @@ object frmMain: TfrmMain
       AntialiasingMode = amOn
       Align = alRight
       OnMouseDown = imgResizeMouseDown
-      OnMouseEnter = memMainMouseEnter
-      OnMouseLeave = memMainMouseLeave
       OnMouseUp = imgResizeMouseUp
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869639301000089504E47
@@ -158,12 +160,15 @@ object frmMain: TfrmMain
       Proportional = True
       Stretch = True
     end
-    object stFocusCatcher: TStaticText
-      Left = 91
-      Height = 17
-      Top = 15
-      Width = 65
-      TabOrder = 0
+    object Label1: TLabel
+      Left = 8
+      Height = 15
+      Top = 0
+      Width = 45
+      Caption = 'Label1'
+      ParentColor = False
+      ParentFont = False
+      Visible = False
     end
   end
   object pnlMain: TPanel
@@ -179,8 +184,6 @@ object frmMain: TfrmMain
     Color = clInfoText
     ParentColor = False
     TabOrder = 2
-    OnMouseEnter = memMainMouseEnter
-    OnMouseLeave = memMainMouseLeave
     object memMain: TMemo
       Left = 8
       Height = 332
@@ -191,8 +194,6 @@ object frmMain: TfrmMain
       Lines.Strings = (
         'Memo1'
       )
-      OnMouseEnter = memMainMouseEnter
-      OnMouseLeave = memMainMouseLeave
       ParentColor = True
       TabOrder = 0
       WordWrap = False
@@ -289,7 +290,7 @@ object frmMain: TfrmMain
     MaxFontSize = 0
     Options = [fdEffects, fdWysiwyg]
     Left = 176
-    Top = 152
+    Top = 144
   end
   object popMain: TPopupMenu
     Left = 106
@@ -306,5 +307,11 @@ object frmMain: TfrmMain
     object MenuItem4: TMenuItem
       Action = actMemoFont
     end
+  end
+  object tiFocus: TTimer
+    Interval = 100
+    OnTimer = tiFocusTimer
+    Left = 106
+    Top = 144
   end
 end

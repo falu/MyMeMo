@@ -24,6 +24,7 @@ type
     Image1: TImage;
     imgClose: TImage;
     imgResize: TImage;
+    Label1: TLabel;
     memMain: TMemo;
     clrMemo: TPanel;
     clrTitle: TPanel;
@@ -36,7 +37,8 @@ type
     pnlTop: TPanel;
     pnlBottom: TPanel;
     popMain: TPopupMenu;
-    stFocusCatcher: TStaticText;
+    stFocusCatcher: TEdit;
+    tiFocus: TTimer;
     xpsData: TXMLPropStorage;
     procedure actMemoBackExecute(Sender: TObject);
     procedure actMemoFontExecute(Sender: TObject);
@@ -51,14 +53,13 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure imgResizeMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure memMainMouseEnter(Sender: TObject);
-    procedure memMainMouseLeave(Sender: TObject);
     procedure OnMoveTimer(Sender: TObject);
     procedure OnResizeTimer(Sender: TObject);
     procedure pnlTopMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure pnlTopMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure tiFocusTimer(Sender: TObject);
   private
     iPosX : Integer;
     iPosY : Integer;
@@ -159,18 +160,6 @@ begin
   Close;
 end;
 
-procedure TfrmMain.memMainMouseEnter(Sender: TObject);
-begin
-  frmMain.AlphaBlend := false;
-  memMain.SetFocus;
-end;
-
-procedure TfrmMain.memMainMouseLeave(Sender: TObject);
-begin
-  frmMain.AlphaBlend := true;
-  stFocusCatcher.SetFocus;
-end;
-
 // mozgatás
 
 procedure TfrmMain.pnlTopMouseDown(Sender: TObject; Button: TMouseButton;
@@ -189,6 +178,22 @@ begin
   If Button = mbLeft Then Begin
     tiMove.Enabled:= False;
   End;
+end;
+
+procedure TfrmMain.tiFocusTimer(Sender: TObject);
+begin
+  //label1.Caption:=format('x=%d, y=%d',[Mouse.CursorPos.X,Mouse.CursorPos.Y ]);
+  if (Mouse.CursorPos.X>left) and (Mouse.CursorPos.X<left+width)
+  and (Mouse.CursorPos.Y>top) and (Mouse.CursorPos.Y<top+height) then begin
+    alphablend:=false;
+    memMain.SetFocus;
+  end else begin
+    if alphablend=false then begin
+      alphablend:=true;
+      stFocusCatcher.SetFocus;
+      self.Deactivate;
+    end;
+  end;
 end;
 
 procedure TfrmMain.OnMoveTimer(Sender: TObject);
