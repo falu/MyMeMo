@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CONFIG>
+  <qwert frmMain_Top="314" frmMain_Left="819" clrMemo_Color="64" frmMain_Width="322" clrTitle_Color="64" frmMain_Height="250" clrMemo_FontName="Segoe UI Semibold" clrMemo_FontSize="10" clrMemo_FontColor="12632256" clrMemo_FontPitch="fpVariable" clrMemo_FontStyle="[fsBold]" clrTitle_FontName="Liberation Sans" clrTitle_FontSize="12" clrMemo_FontHeight="-13" clrTitle_FontColor="16777215" clrTitle_FontPitch="fpVariable" clrTitle_FontStyle="[fsBold]" clrMemo_FontCharSet="238" clrMemo_FontQuality="fqDraft" clrTitle_FontHeight="-16" clrTitle_FontCharSet="0" clrTitle_FontQuality="fqDraft" clrMemo_FontOrientation="0" clrTitle_FontOrientation="0">
+    <memMain_Lines Count="5" Item0="first line" Item1="" Item2="Second line" Item3="" Item4="third line"/>
+  </qwert>
+</CONFIG>
