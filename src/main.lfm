@@ -320,4 +320,11 @@ object frmMain: TfrmMain
     Left = 106
     Top = 144
   end
+  object tiAutoSave: TIdleTimer
+    AutoEnabled = True
+    Interval = 600000
+    OnTimer = tiAutoSaveTimer
+    Left = 48
+    Top = 328
+  end
 end

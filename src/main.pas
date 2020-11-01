@@ -22,6 +22,7 @@ type
     alMain: TActionList;
     dlgColor: TColorDialog;
     dlgFont: TFontDialog;
+    tiAutoSave: TIdleTimer;
     Image1: TImage;
     imgClose: TImage;
     imgResize: TImage;
@@ -62,6 +63,7 @@ type
       Shift: TShiftState; X, Y: integer);
     procedure pnlTopMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: integer);
+    procedure tiAutoSaveTimer(Sender: TObject);
     procedure tiFocusTimer(Sender: TObject);
   private
     iPosX: integer;
@@ -71,8 +73,10 @@ type
     iSizeX: integer;
     iSizeY: integer;
     tiResize: TTimer;
+
+    sText: string;
   public
-    a: string;
+
   end;
 
 var
@@ -195,6 +199,14 @@ begin
   if Button = mbLeft then
   begin
     tiMove.Enabled := False;
+  end;
+end;
+
+procedure TfrmMain.tiAutoSaveTimer(Sender: TObject);
+begin
+  if sText <> memMain.Text then begin
+    xpsData.Save;
+    sText:=memMain.Text;
   end;
 end;
 
