@@ -7,12 +7,13 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, main, runtimetypeinfocontrols
+  Forms, main, runtimetypeinfocontrols, uniqueinstanceraw
   { you can add units after this };
 
 {$R *.res}
 
 begin
+  if InstanceRunning('mymemo.falu.me') then exit;
   RequireDerivedFormResource:=True;
   Application.Title:='MyMeMo';
   Application.Scaled:=True;
