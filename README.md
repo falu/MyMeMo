@@ -21,3 +21,7 @@ Download (or Clone), Compile (with [Lazarus](https://www.lazarus-ide.org/)), Run
 ## Support
 
 Are you joking?
+
+## Tahks
+
+Thank you [Icons8](https://icons8.com/) for the nice icons!
