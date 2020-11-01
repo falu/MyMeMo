@@ -12,9 +12,8 @@ object frmMain: TfrmMain
   DefaultMonitor = dmPrimary
   OnCreate = FormCreate
   OnShow = FormShow
-  SessionProperties = 'Height;Left;memMain.Lines;Top;Width;clrMemo.Color;clrMemo.Font;clrTitle.Color;clrTitle.Font'
+  SessionProperties = 'clrMemo.Color;clrMemo.Font;clrTitle.Color;clrTitle.Font;Height;Left;memMain.Lines;Top;Width;pnlTop.Caption'
   ShowHint = True
-  ShowInTaskBar = stAlways
   LCLVersion = '2.0.10.0'
   object stFocusCatcher: TEdit
     Left = 32
@@ -164,7 +163,7 @@ object frmMain: TfrmMain
       Left = 8
       Height = 15
       Top = 0
-      Width = 45
+      Width = 34
       Caption = 'Label1'
       ParentColor = False
       ParentFont = False
@@ -257,6 +256,10 @@ object frmMain: TfrmMain
       Caption = 'Set Theme'
       OnExecute = actSetThemeExecute
     end
+    object actCaption: TAction
+      Caption = 'Change Caption'
+      OnExecute = actCaptionExecute
+    end
   end
   object dlgColor: TColorDialog
     Color = clBlack
@@ -306,6 +309,9 @@ object frmMain: TfrmMain
     end
     object MenuItem4: TMenuItem
       Action = actMemoFont
+    end
+    object MenuItem5: TMenuItem
+      Action = actCaption
     end
   end
   object tiFocus: TTimer

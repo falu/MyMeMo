@@ -13,6 +13,7 @@ type
   { TfrmMain }
 
   TfrmMain = class(TForm)
+    actCaption: TAction;
     actSetTheme: TAction;
     actTitleBack: TAction;
     actTitleFont: TAction;
@@ -32,6 +33,7 @@ type
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
     pnlTheme: TPanel;
     pnlMain: TPanel;
     pnlTop: TPanel;
@@ -40,6 +42,7 @@ type
     stFocusCatcher: TEdit;
     tiFocus: TTimer;
     xpsData: TXMLPropStorage;
+    procedure actCaptionExecute(Sender: TObject);
     procedure actMemoBackExecute(Sender: TObject);
     procedure actMemoFontExecute(Sender: TObject);
     procedure actSetThemeExecute(Sender: TObject);
@@ -50,26 +53,26 @@ type
     procedure Image1Click(Sender: TObject);
     procedure imgCloseClick(Sender: TObject);
     procedure imgResizeMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+      Shift: TShiftState; X, Y: integer);
     procedure imgResizeMouseUp(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+      Shift: TShiftState; X, Y: integer);
     procedure OnMoveTimer(Sender: TObject);
     procedure OnResizeTimer(Sender: TObject);
     procedure pnlTopMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+      Shift: TShiftState; X, Y: integer);
     procedure pnlTopMouseUp(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
+      Shift: TShiftState; X, Y: integer);
     procedure tiFocusTimer(Sender: TObject);
   private
-    iPosX : Integer;
-    iPosY : Integer;
+    iPosX: integer;
+    iPosY: integer;
     tiMove: TTimer;
 
-    iSizeX : integer;
-    iSizeY : integer;
+    iSizeX: integer;
+    iSizeY: integer;
     tiResize: TTimer;
   public
-     a:string;
+    a: string;
   end;
 
 var
@@ -83,63 +86,76 @@ implementation
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
-  DoubleBuffered:= True;
+  DoubleBuffered := True;
 
-  tiMove         := TTimer.Create(Application);
-  tiMove.Interval:= 30;
+  tiMove := TTimer.Create(Application);
+  tiMove.Interval := 30;
   tiMove.Enabled := False;
   tiMove.OnTimer := @OnMoveTimer;
 
-  tiResize         := TTimer.Create(Application);
-  tiResize.Interval:= 30;
+  tiResize := TTimer.Create(Application);
+  tiResize.Interval := 30;
   tiResize.Enabled := False;
   tiResize.OnTimer := @OnResizeTimer;
 end;
 
 procedure TfrmMain.actTitleBackExecute(Sender: TObject);
 begin
-  dlgColor.Color:= clrTitle.Color;
-  if dlgColor.Execute then begin
-    clrTitle.Color:=dlgColor.Color;
+  dlgColor.Color := clrTitle.Color;
+  if dlgColor.Execute then
+  begin
+    clrTitle.Color := dlgColor.Color;
     actSetTheme.Execute;
   end;
 end;
 
 procedure TfrmMain.actTitleFontExecute(Sender: TObject);
 begin
-  dlgFont.Font:= clrTitle.Font;
-  if dlgFont.Execute then begin
-    clrTitle.Font:= dlgFont.Font;
+  dlgFont.Font := clrTitle.Font;
+  if dlgFont.Execute then
+  begin
+    clrTitle.Font := dlgFont.Font;
     actSetTheme.Execute;
   end;
 end;
 
 procedure TfrmMain.actSetThemeExecute(Sender: TObject);
 begin
-  pnlTop.Color:=clrTitle.Color;
-  pnlTop.Font:=clrTitle.Font;
+  pnlTop.Color := clrTitle.Color;
+  pnlTop.Font := clrTitle.Font;
 
-  pnlMain.Color:= clrMemo.Color;
-  pnlMain.Font:=clrMemo.Font;
+  pnlMain.Color := clrMemo.Color;
+  pnlMain.Font := clrMemo.Font;
 
-  pnlBottom.Color:= clrMemo.Color;
-  pnlBottom.Font:=clrMemo.Font;
+  pnlBottom.Color := clrMemo.Color;
+  pnlBottom.Font := clrMemo.Font;
 end;
 
 procedure TfrmMain.actMemoBackExecute(Sender: TObject);
 begin
-  dlgColor.Color:=clrMemo.Color;
-  if dlgColor.Execute then begin
-    clrMemo.Color:= dlgColor.Color;
+  dlgColor.Color := clrMemo.Color;
+  if dlgColor.Execute then
+  begin
+    clrMemo.Color := dlgColor.Color;
     actSetTheme.Execute;
   end;
 end;
 
+procedure TfrmMain.actCaptionExecute(Sender: TObject);
+var
+  tmp: string;
+begin
+  tmp := inputbox('MyMeMo', 'Caption', pnlTop.Caption);
+  if tmp <> '' then
+    pnlTop.Caption := tmp;
+end;
+
 procedure TfrmMain.actMemoFontExecute(Sender: TObject);
 begin
-  dlgFont.Font:= clrMemo.Font;
-  if dlgFont.Execute then begin
-    clrMemo.Font:=dlgFont.Font;
+  dlgFont.Font := clrMemo.Font;
+  if dlgFont.Execute then
+  begin
+    clrMemo.Font := dlgFont.Font;
     actSetTheme.Execute;
   end;
 end;
@@ -163,33 +179,39 @@ end;
 // mozgatás
 
 procedure TfrmMain.pnlTopMouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+  Shift: TShiftState; X, Y: integer);
 begin
-  If Button = mbLeft Then Begin
-    iPosX:= Mouse.CursorPos.X - Left;
-    iPosY:= Mouse.CursorPos.Y - Top;
-    tiMove.Enabled:= True;
-  End;
+  if Button = mbLeft then
+  begin
+    iPosX := Mouse.CursorPos.X - Left;
+    iPosY := Mouse.CursorPos.Y - Top;
+    tiMove.Enabled := True;
+  end;
 end;
 
 procedure TfrmMain.pnlTopMouseUp(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+  Shift: TShiftState; X, Y: integer);
 begin
-  If Button = mbLeft Then Begin
-    tiMove.Enabled:= False;
-  End;
+  if Button = mbLeft then
+  begin
+    tiMove.Enabled := False;
+  end;
 end;
 
 procedure TfrmMain.tiFocusTimer(Sender: TObject);
 begin
   //label1.Caption:=format('x=%d, y=%d',[Mouse.CursorPos.X,Mouse.CursorPos.Y ]);
-  if (Mouse.CursorPos.X>left) and (Mouse.CursorPos.X<left+width)
-  and (Mouse.CursorPos.Y>top) and (Mouse.CursorPos.Y<top+height) then begin
-    alphablend:=false;
+  if (Mouse.CursorPos.X > left) and (Mouse.CursorPos.X < left + Width) and
+    (Mouse.CursorPos.Y > top) and (Mouse.CursorPos.Y < top + Height) then
+  begin
+    alphablend := False;
     memMain.SetFocus;
-  end else begin
-    if alphablend=false then begin
-      alphablend:=true;
+  end
+  else
+  begin
+    if alphablend = False then
+    begin
+      alphablend := True;
       stFocusCatcher.SetFocus;
       self.Deactivate;
     end;
@@ -197,42 +219,44 @@ begin
 end;
 
 procedure TfrmMain.OnMoveTimer(Sender: TObject);
-Begin
+begin
   Top := Mouse.CursorPos.Y - iPosY;
-  Left:= Mouse.CursorPos.X - iPosX;
-End;
+  Left := Mouse.CursorPos.X - iPosX;
+end;
 
 // átméretezés
 
 procedure TfrmMain.OnResizeTimer(Sender: TObject);
 var
-  h,w:integer;
+  h, w: integer;
 begin
-  h:= Mouse.CursorPos.Y - iSizeY;
-  w:= Mouse.CursorPos.X - iSizeX;
-  if (h>=100) and (w>=100) then begin
-    height := h;
-    width := w;
+  h := Mouse.CursorPos.Y - iSizeY;
+  w := Mouse.CursorPos.X - iSizeX;
+  if (h >= 100) and (w >= 100) then
+  begin
+    Height := h;
+    Width := w;
   end;
 end;
 
 procedure TfrmMain.imgResizeMouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+  Shift: TShiftState; X, Y: integer);
 begin
-  If Button = mbLeft Then Begin
-    iSizeX:= Mouse.CursorPos.X - width;
-    iSizeY:= Mouse.CursorPos.Y - height;
-    tiResize.Enabled:= True;
-  End;
+  if Button = mbLeft then
+  begin
+    iSizeX := Mouse.CursorPos.X - Width;
+    iSizeY := Mouse.CursorPos.Y - Height;
+    tiResize.Enabled := True;
+  end;
 end;
 
 procedure TfrmMain.imgResizeMouseUp(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+  Shift: TShiftState; X, Y: integer);
 begin
-  If Button = mbLeft Then Begin
-    tiResize.Enabled:= False;
-  End;
+  if Button = mbLeft then
+  begin
+    tiResize.Enabled := False;
+  end;
 end;
 
 end.
-
