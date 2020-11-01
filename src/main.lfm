@@ -163,7 +163,7 @@ object frmMain: TfrmMain
       Left = 8
       Height = 15
       Top = 0
-      Width = 34
+      Width = 45
       Caption = 'Label1'
       ParentColor = False
       ParentFont = False
@@ -260,6 +260,10 @@ object frmMain: TfrmMain
       Caption = 'Change Caption'
       OnExecute = actCaptionExecute
     end
+    object actShortcut: TAction
+      Caption = 'Shortcut'
+      OnExecute = actShortcutExecute
+    end
   end
   object dlgColor: TColorDialog
     Color = clBlack
@@ -312,6 +316,9 @@ object frmMain: TfrmMain
     end
     object MenuItem5: TMenuItem
       Action = actCaption
+    end
+    object MenuItem6: TMenuItem
+      Action = actShortcut
     end
   end
   object tiFocus: TTimer

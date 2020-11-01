@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  XMLPropStorage, ExtCtrls, ComCtrls, ActnList, Menus;
+  XMLPropStorage, ExtCtrls, ComCtrls, ActnList, Menus, IniFiles;
 
 type
 
@@ -14,6 +14,7 @@ type
 
   TfrmMain = class(TForm)
     actCaption: TAction;
+    actShortcut: TAction;
     actSetTheme: TAction;
     actTitleBack: TAction;
     actTitleFont: TAction;
@@ -22,6 +23,7 @@ type
     alMain: TActionList;
     dlgColor: TColorDialog;
     dlgFont: TFontDialog;
+    MenuItem6: TMenuItem;
     tiAutoSave: TIdleTimer;
     Image1: TImage;
     imgClose: TImage;
@@ -44,6 +46,7 @@ type
     tiFocus: TTimer;
     xpsData: TXMLPropStorage;
     procedure actCaptionExecute(Sender: TObject);
+    {$ifdef linux} procedure actShortcutExecute(Sender: TObject); {$endif}
     procedure actMemoBackExecute(Sender: TObject);
     procedure actMemoFontExecute(Sender: TObject);
     procedure actSetThemeExecute(Sender: TObject);
@@ -154,6 +157,44 @@ begin
     pnlTop.Caption := tmp;
 end;
 
+{$ifdef linux}
+procedure TfrmMain.actShortcutExecute(Sender: TObject);
+var
+  ini: tinifile;
+  inifn: string;
+  inipath: string;
+  exefn: string;
+  exepath: string;
+  homedir: string;
+const
+  section = 'Desktop Entry';
+begin
+  //create desktop icon
+  homedir := IncludeTrailingPathDelimiter(GetEnvironmentVariable('HOME'));
+
+  inipath := IncludeTrailingPathDelimiter(homedir + '.local/share/applications');
+  forcedirectories(inipath);
+
+  inifn := 'geopm.desktop';
+
+  exefn := ParamStr(0);
+
+  exepath := IncludeTrailingPathDelimiter(extractfilepath(exefn));
+
+  ini := tinifile.Create(inipath + inifn);
+  ini.WriteString(section, 'Name', 'MyMeMo');
+  ini.WriteString(section, 'Comment', 'Simple Note Taking Application');
+  ini.WriteString(section, 'Terminal', 'false');
+  ini.WriteString(section, 'Type', 'Application');
+  ini.WriteString(section, 'Path', exepath);
+  ini.WriteString(section, 'Exec', exefn);
+  ini.WriteString(section, 'Icon', exepath + 'mymemo.ico');
+  ini.UpdateFile;
+  ini.Free;
+end;
+
+{$endif}
+
 procedure TfrmMain.actMemoFontExecute(Sender: TObject);
 begin
   dlgFont.Font := clrMemo.Font;
@@ -204,9 +245,10 @@ end;
 
 procedure TfrmMain.tiAutoSaveTimer(Sender: TObject);
 begin
-  if sText <> memMain.Text then begin
+  if sText <> memMain.Text then
+  begin
     xpsData.Save;
-    sText:=memMain.Text;
+    sText := memMain.Text;
   end;
 end;
 
