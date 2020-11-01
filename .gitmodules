@@ -1,0 +1,4 @@
+[submodule "src/luipack"]
+	path = src/luipack
+	url = https://github.com/blikblum/luipack.git
+	branch = master
