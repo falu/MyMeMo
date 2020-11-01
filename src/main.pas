@@ -171,16 +171,11 @@ const
 begin
   //create desktop icon
   homedir := IncludeTrailingPathDelimiter(GetEnvironmentVariable('HOME'));
-
   inipath := IncludeTrailingPathDelimiter(homedir + '.local/share/applications');
   forcedirectories(inipath);
-
-  inifn := 'geopm.desktop';
-
+  inifn := 'mymemo.desktop';
   exefn := ParamStr(0);
-
   exepath := IncludeTrailingPathDelimiter(extractfilepath(exefn));
-
   ini := tinifile.Create(inipath + inifn);
   ini.WriteString(section, 'Name', 'MyMeMo');
   ini.WriteString(section, 'Comment', 'Simple Note Taking Application');
@@ -192,7 +187,6 @@ begin
   ini.UpdateFile;
   ini.Free;
 end;
-
 {$endif}
 
 procedure TfrmMain.actMemoFontExecute(Sender: TObject);
