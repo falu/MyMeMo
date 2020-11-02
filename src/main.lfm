@@ -163,7 +163,7 @@ object frmMain: TfrmMain
       Left = 8
       Height = 15
       Top = 0
-      Width = 45
+      Width = 34
       Caption = 'Label1'
       ParentColor = False
       ParentFont = False

@@ -46,7 +46,7 @@ type
     tiFocus: TTimer;
     xpsData: TXMLPropStorage;
     procedure actCaptionExecute(Sender: TObject);
-    {$ifdef linux} procedure actShortcutExecute(Sender: TObject); {$endif}
+    procedure actShortcutExecute(Sender: TObject);
     procedure actMemoBackExecute(Sender: TObject);
     procedure actMemoFontExecute(Sender: TObject);
     procedure actSetThemeExecute(Sender: TObject);
@@ -104,6 +104,11 @@ begin
   tiResize.Interval := 30;
   tiResize.Enabled := False;
   tiResize.OnTimer := @OnResizeTimer;
+
+  {$ifndef linux}
+  actShortcut.Visible := False;
+  {$endif}
+
 end;
 
 procedure TfrmMain.actTitleBackExecute(Sender: TObject);
@@ -157,7 +162,6 @@ begin
     pnlTop.Caption := tmp;
 end;
 
-{$ifdef linux}
 procedure TfrmMain.actShortcutExecute(Sender: TObject);
 var
   ini: tinifile;
@@ -187,7 +191,6 @@ begin
   ini.UpdateFile;
   ini.Free;
 end;
-{$endif}
 
 procedure TfrmMain.actMemoFontExecute(Sender: TObject);
 begin
