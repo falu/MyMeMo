@@ -264,6 +264,10 @@ object frmMain: TfrmMain
       Caption = 'Shortcut'
       OnExecute = actShortcutExecute
     end
+    object actSave: TAction
+      Caption = 'Save'
+      OnExecute = actSaveExecute
+    end
   end
   object dlgColor: TColorDialog
     Color = clBlack
@@ -316,6 +320,9 @@ object frmMain: TfrmMain
     end
     object MenuItem5: TMenuItem
       Action = actCaption
+    end
+    object MenuItem7: TMenuItem
+      Action = actSave
     end
     object MenuItem6: TMenuItem
       Action = actShortcut

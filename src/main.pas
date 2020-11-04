@@ -14,6 +14,7 @@ type
 
   TfrmMain = class(TForm)
     actCaption: TAction;
+    actSave: TAction;
     actShortcut: TAction;
     actSetTheme: TAction;
     actTitleBack: TAction;
@@ -24,6 +25,7 @@ type
     dlgColor: TColorDialog;
     dlgFont: TFontDialog;
     MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
     tiAutoSave: TIdleTimer;
     Image1: TImage;
     imgClose: TImage;
@@ -46,6 +48,7 @@ type
     tiFocus: TTimer;
     xpsData: TXMLPropStorage;
     procedure actCaptionExecute(Sender: TObject);
+    procedure actSaveExecute(Sender: TObject);
     procedure actShortcutExecute(Sender: TObject);
     procedure actMemoBackExecute(Sender: TObject);
     procedure actMemoFontExecute(Sender: TObject);
@@ -160,6 +163,12 @@ begin
   tmp := inputbox('MyMeMo', 'Caption', pnlTop.Caption);
   if tmp <> '' then
     pnlTop.Caption := tmp;
+end;
+
+procedure TfrmMain.actSaveExecute(Sender: TObject);
+begin
+  //save settings and data
+  xpsData.Save;
 end;
 
 procedure TfrmMain.actShortcutExecute(Sender: TObject);
